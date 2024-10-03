@@ -15,3 +15,6 @@ module "vpc" {
 }
 
 
+module "gke" {
+  source = "./modules/gke"
+}
