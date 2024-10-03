@@ -1,7 +1,7 @@
 provider "google" {
   project = var.project_id
   region  = var.region
-  credentials = file("/Users/honeykaushik/my-first-project/abstract-brand-435818-g6-b30930c2ad7a.json")
+  credentials = file("abstract-brand-435818-g6-b30930c2ad7a.json")
 }
 
 module "vpc" {
