@@ -5,7 +5,7 @@ resource "google_compute_network" "vpc_network" {
 }
 
 # Public subnets
-resource "google_compute_subnetwork" "public_subnet" {
+esource "google_compute_subnetwork" "public_subnet" {
   count = length(var.public_subnet_ip_ranges)
 
   name          = "${var.network_name}-public-subnet-${count.index + 1}"
