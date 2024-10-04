@@ -22,3 +22,13 @@ resource "google_container_cluster" "primary" {
 output "kube_config" {
   value = google_container_cluster.primary.endpoint
 }
+
+# Registy
+
+resource "google_artifact_registry_repository" "default" {
+  provider = google
+  repository_id = "docker-repo"  # Name of your repository
+  format      = "DOCKER"                # Choose the format (DOCKER, MAVEN, NPM, etc.)
+  location    = "us-east1"           # Choose the location
+  description = "My Artifact Registry"   # Optional description
+}

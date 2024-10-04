@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-calculator
+  namespace: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-calculator
+  template:
+    metadata:
+      labels:
+        app: react-calculator
+    spec:
+      containers:
+        - name: react-calculator
+          image: "hmutegeki/react-calculator"
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+      nodeSelector:
+        app: frontend
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-calculator-lb
+  namespace: application
+spec:
+  selector:
+    app: react-calculator  # Use the same label as defined in your Deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
